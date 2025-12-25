@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# Pytest
+.cache/
+
+# IDE specific
+.idea/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.log.*

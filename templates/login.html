@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <h3 class="login-title">Welcome Back 👋</h3>
+
+        <form method="post">
+            {{ form.hidden_tag() }}
+
+            {{ form.email(class="form-control mb-3", placeholder="Email") }}
+            {{ form.password(class="form-control mb-3", placeholder="Password") }}
+
+            {{ form.submit(class="btn login-btn w-100") }}
+
+            <div class="buttons mt-3">
+                <p>Don’t have an account?
+                    <a href="{{ url_for('auth.register') }}">Register here</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Inline CSS for styling -->
+<style>
+/* Page background */
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+/* Center the card */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+
+/* Login card */
+.login-card {
+    background: #ffffff;
+    padding: 35px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Title */
+.login-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Inputs */
+.form-control {
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.15rem rgba(102, 126, 234, 0.25);
+}
+
+/* Button */
+.login-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
+}
+
+/* Register link */
+.buttons p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.buttons a {
+    color: #667eea;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+{% endblock %}

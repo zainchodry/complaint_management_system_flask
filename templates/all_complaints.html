@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="complaints-wrapper">
+    <div class="complaints-card">
+
+        <div class="complaints-header">
+            <h3>All Complaints</h3>
+        </div>
+
+        <table class="complaints-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for c in complaints %}
+                <tr>
+                    <td>{{ c.title }}</td>
+                    <td>
+                        <span class="status {{ c.status|lower }}">
+                            {{ c.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin.review_complaint', id=c.id) }}"
+                           class="btn review-btn">
+                           Review
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="empty">No complaints available.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- Inline CSS -->
+<style>
+body {
+    background: #f4f6fb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Wrapper */
+.complaints-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 15px;
+}
+
+/* Card */
+.complaints-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Header */
+.complaints-header {
+    margin-bottom: 25px;
+}
+
+.complaints-header h3 {
+    margin: 0;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Table */
+.complaints-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.complaints-table thead {
+    background: #f1f3fa;
+}
+
+.complaints-table th {
+    text-align: left;
+    padding: 14px;
+    font-size: 14px;
+    color: #555;
+}
+
+.complaints-table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+    color: #333;
+}
+
+.complaints-table tbody tr:hover {
+    background: #f9faff;
+}
+
+/* Status badge */
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status.resolved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status.rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Review button */
+.review-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(118, 75, 162, 0.4);
+}
+
+/* Empty state */
+.empty {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+{% endblock %}
