@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
-from decorators import role_required
-from models import Complaint
-from forms import AdminReviewForm
+from app.decorators import role_required
+from app.models import Complaint
+from app.forms import AdminReviewForm
 from app.extenshions import db
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')

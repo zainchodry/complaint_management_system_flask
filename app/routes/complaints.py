@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
-from models import Complaint
-from forms import ComplaintForm, CommentForm
+from app.models import Complaint
+from app.forms import ComplaintForm, CommentForm
 from app.extenshions import db
 
 complaint_bp = Blueprint('complaints', __name__)
